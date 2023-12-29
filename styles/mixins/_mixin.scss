@@ -1,0 +1,58 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexAlStart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin flexJuStart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin appHover {
+  transition: background-color 0.1s ease-in-out;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@mixin searchBar {
+  &__search {
+    background: rgb(40, 40, 40);
+    background: linear-gradient(
+      270deg,
+      rgba(50, 50, 50, 1) 0%,
+      rgba(60, 60, 60, 1) 50%,
+      rgba(50, 50, 50, 1) 100%
+    );
+    height: 28px;
+    border-radius: 20px;
+    @include flexCenter;
+    &--icon {
+      height: 14px;
+      width: 14px;
+      margin: 7px;
+      margin-left: 12px;
+    }
+    &--text {
+      color: rgba(255, 255, 255, 1);
+      background-color: transparent;
+      border: none;
+      outline: none;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}

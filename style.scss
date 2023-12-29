@@ -1,0 +1,16 @@
+@import "./styles/_main.scss";
+@import "./styles/apps/_chrome.scss";
+@import "./styles/apps/_explorer.scss";
+@import "./styles/apps/_folderoutline.scss";
+@import "./styles/apps/_recycle.scss";
+@import "./styles/apps/_sticky.scss";
+@import "./styles/tb/_startmenu.scss";
+@import "./styles/tb/_taskbar.scss";
+
+* {
+  margin: 0;
+  border: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  cursor: default;
+}

@@ -1,0 +1,64 @@
+@import "../mixins/_mixin.scss";
+
+.task {
+  height: 42px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(28, 28, 28, 0.7);
+  backdrop-filter: blur(20px);
+  @include flexCenter;
+  justify-content: flex-start;
+  &__start {
+    height: 35px;
+    width: 35px;
+    margin: 7px 10px 7px 15px;
+    @include flexCenter;
+    border-radius: 3px;
+    &--icon {
+      height: 21px;
+      width: 21px;
+    }
+    @include appHover;
+  }
+  @include searchBar;
+  &__apps {
+    padding-top: 3px;
+    @include flexCenter;
+    &__sel {
+      @include appHover;
+      @include flexCenter;
+      margin-left: 12px;
+      height: 35px;
+      width: 35px;
+      margin: 7px 2px 7px 2px;
+      border-radius: 3px;
+      &:first-child {
+        margin-left: 15px;
+      }
+      &--folder {
+        max-width: 22px;
+      }
+    }
+  }
+  &__icons {
+    margin-left: auto;
+    @include flexCenter;
+    &--tb {
+      margin-right: 20px;
+      height: 23px;
+      width: 157px;
+    }
+    &--bell {
+      margin-right: 15px;
+      height: 15px;
+      width: 12px;
+    }
+    &__time {
+      margin-right: 12px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 350;
+    }
+  }
+}

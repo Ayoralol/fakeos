@@ -3,35 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FakeOS - Windows 10</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./scripts/date-time.js" defer></script>
+    <script src="./scripts/startmenu.js" defer></script>
+    <script src="./scripts/sticky.js" defer></script>
+    <title>FakeOS - Windows 11</title>
   </head>
   <body>
-    <!-- body has the background -->
     <section class="main">
-      <!-- recycle bin can actually be done with classes -->
-      <div class="main__recycle"></div>
-      <!-- chrome can access BING in iFrame -->
-      <div class="main__chrome"></div>
-      <!-- sticky can be either permanently updating OR activate in a non-resizeable grid with the same premise as rec-bin -->
-      <div class="main__sticky"></div>
-      <!-- files will open files and be able to create things using classes -->
-      <div class="main__files"></div>
+      <div class="grid">
+        <div class="grid__app grid__app__recycle">
+          <img src="./images+icons/binempty.png" class="grid__app__recycle--icon">
+          <p class="grid__app--text">Recycle Bin</p>
+        </div>
+        <div class="grid__app grid__app__edge">
+          <img src="./images+icons/edgedesktop.svg" class="grid__app__edge--icon">
+          <p class="grid__app--text">Edge</p>
+        </div>
+        <div class="grid__app grid__app__sticky sticky--click">
+          <img src="./images+icons/stickynotes.png" class="grid__app__sticky--icon">
+          <p class="grid__app--text">Sticky Notes</p>
+        </div>
+        <div class="grid__app grid__app__explorer">
+          <img src="./images+icons/folderdesktop.png" class="grid__app__explorer--icon">
+          <p class="grid__app--text">Documents</p>
+        </div>
+      </div>
+      <div class="sticky-app">
+        <div class="sticky-app__head">
+          <div class="sticky-app__head--wrap">
+            <img src="./images+icons/sticky-exit.png" class="sticky-app__head--icon">
+          </div>
+        </div>
+        <div class="sticky-app__body">
+          <textarea cols="28" rows="10" class="sticky-app__body--text"></textarea>
+        </div>
+      </div>
     </section>
+    <div class="start">
+      <div class="start__search">
+        <img src="./images+icons/search.png" class="start__search--icon">
+        <input type="text" class="start__search--text" placeholder="Search for apps, settings, and documents" maxlength="50">
+      </div>
+      <div class="start__div start__pinned">
+        <p>Pinned</p>
+      </div>
+      <div class="start__div start__pin-miss">
+        <p>Sorry, it seems like you dont have any pinned apps.</p>
+      </div>
+      <div class="start__div start__recom">
+        <p>Recommended</p>
+      </div>
+      <div class="start__div start__recom-app">
+        <div class="start__recom-app__app">
+          <img src="./images+icons/edgestart.svg" class="start__recom-app__app--img">
+          <p>Microsoft Edge</p>
+        </div>
+        <div class="start__recom-app__app sticky--click">
+          <img src="./images+icons/stickynotes.png" class="start__recom-app__app--img">
+          <p>Sticky Notes</p>
+        </div>
+        <div class="start__recom-app__app">
+          <img src="./images+icons/folderdesktop.png" class="start__recom-app__app--img">
+          <p>Documents</p>
+        </div>
+      </div>
+      <div class="start__div start__user">
+          <img src="./images+icons/guest.png" class="start__user__guest">
+          <p class="start__user__text">Guest</p>
+        <div class="start__user__pow-wrap">
+          <img src="./images+icons/power.png" class="start__user__power">
+        </div>
+      </div>
+      <div class="start__power-menu">
+        <div class="start__power-menu__list">
+          <img src="./images+icons/sleep.png" class="start__power-menu__list--icon">
+          <p>Sleep</p>
+        </div>
+        <div class="start__power-menu__list">
+          <img src="./images+icons/power.png" class="start__power-menu__list--icon">
+          <p>Shut Down</p>
+        </div>
+        <div class="start__power-menu__list">
+          <img src="./images+icons/restart.png" class="start__power-menu__list--icon">
+          <p>Restart</p>
+        </div>
+      </div>
+    </div>
     <footer class="task">
-      <!-- start popup -->
-      <div class="task__start"></div>
-      <!-- search bar somewhat working? -->
-      <div class="task__search"></div>
-      <!-- preset apps (chrome)(others) -->
-      <div class="task__apps"></div>
-      <!-- icon up arrow -->
-      <div class="task__icon-up"></div>
-      <!-- main stay icons / wifi-sound -->
-      <div class="task__icons"></div>
-      <!-- solid date and time -->
-      <div class="task__date"></div>
-      <!-- notifications -->
-      <div class="task__noti"></div>
+      <div class="task__start">
+        <img src="./images+icons/windowsStartIcon.png" class="task__start--icon"></img>
+      </div>
+      <div class="task__search">
+        <img src="./images+icons/search.png" class="task__search--icon">
+        <input type="text" class="task__search--text" placeholder="Search">
+      </div>
+      <div class="task__apps">
+        <div class="task__apps__sel">
+          <img src="./images+icons/edgetaskbar.svg" class="task__apps__sel--edge">
+        </div>
+        <div class="task__apps__sel">
+          <img src="./images+icons/folder.png" class="task__apps__sel--folder">
+        </div>
+      </div>
+      <div class="task__icons">
+        <img src="./images+icons/taskbar.png" class="task__icons--tb">
+        <div class="task__icons__time">
+          <p class="task__icons__time--time">00:00 AM</p>
+          <p class="task__icons__time--date">01/01/2000</p>
+        </div>
+        <img src="./images+icons/bell.png" class="task__icons--bell">
+      </div>
     </footer>
   </body>
 </html>
