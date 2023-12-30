@@ -1,22 +1,29 @@
-let docArray = [{
+let docArray = [
+  {
     name: "README",
     icon: "./images+icons/txt.png",
     appHash: 1,
-    docContent: "The readme text of this project."
-}];
+    docContent: "The readme text of this project.",
+  },
+];
 
-let picArray = [{
+let picArray = [
+  {
     name: "Beach",
     icon: "./images+icons/pic.png",
     appHash: 2,
-    docContent: "./images+icons/backgrounds/beach.png"
-}];
+    docContent: "./images+icons/backgrounds/beach.png",
+  },
+];
 
-let deskArray = [{
+let deskArray = [
+  {
     name: "Edge",
     icon: "./images+icons/edge.png",
-    appHash: 5
-}];
+    appHash: 5,
+  },
+];
 
 let binArray = [{...deletedItem, loc: oldArray}];
 
+const renderDoc = () => {};

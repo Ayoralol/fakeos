@@ -1,5 +1,5 @@
 .main {
-  background-image: url(./images+icons/background.jpg);
+  background-image: url(./images+icons/backgrounds/defaultBlue.jpg);
   background-size: cover;
   height: 100vh;
   width: 100vw;
@@ -52,6 +52,189 @@
 }
 .grid__app__explorer--icon {
   width: 47px;
+}
+
+.edge {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.edge__iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.explorer {
+  display: none;
+  position: fixed;
+  width: 800px;
+  height: 400px;
+  background-color: rgb(25, 25, 25);
+  top: 15%;
+  left: 15%;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  border: 0.5px solid rgb(50, 50, 50);
+}
+.explorer__top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(10, 10, 10);
+  border-radius: 10px 10px 0 0;
+  height: 30px;
+  width: 100%;
+}
+.explorer__top__text {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  margin-left: 15px;
+}
+.explorer__top__exit {
+  margin-left: auto;
+  width: 38px;
+  height: 80%;
+  align-self: flex-start;
+  border-radius: 0 10px 0 0;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.explorer__top__exit:hover {
+  background-color: rgb(180, 50, 50);
+}
+.explorer__top__exit--btn {
+  width: 9px;
+}
+.explorer__options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+  font-size: 12px;
+  border-bottom: 0.5px solid rgb(50, 50, 50);
+}
+.explorer__options__new {
+  height: 75%;
+  border-radius: 3px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: background-color 0.1s ease-in-out;
+}
+.explorer__options__new:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__new:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__options__sort {
+  height: 75%;
+  border-radius: 3px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: background-color 0.1s ease-in-out;
+}
+.explorer__options__sort:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__sort:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__options__delete {
+  height: 75%;
+  border-radius: 3px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: background-color 0.1s ease-in-out;
+}
+.explorer__options__delete:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__delete:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__main {
+  width: 100%;
+  height: 330px;
+  display: flex;
+}
+.explorer__main__nav {
+  width: 15%;
+  height: 100%;
+  border-right: 0.5px solid rgb(50, 50, 50);
+  overflow: auto;
+}
+.explorer__main__nav__item {
+  transition: background-color 0.1s ease-in-out;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: 25px;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.explorer__main__nav__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__main__nav__item:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__main__nav__item--img {
+  max-width: 12px;
+  margin-right: 5px;
+  margin-left: 12px;
+}
+.explorer__main__render {
+  width: 85%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.explorer__main__render__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background-color 0.1s ease-in-out;
+  margin: 5px 0 0 5px;
+  width: 35%;
+  height: 20px;
+  border-radius: 5px;
+}
+.explorer__main__render__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__main__render__item:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__main__render__item--text {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  padding-left: 8px;
+}
+.explorer__main__render__item--img {
+  max-height: 15px;
+  max-width: 30px;
+  border-radius: 3px;
+  padding-left: 10px;
 }
 
 .sticky-app {
