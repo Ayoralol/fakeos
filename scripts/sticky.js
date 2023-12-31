@@ -1,19 +1,33 @@
-// Get the sticky app and the sticky click items
-let stickyApp = document.querySelector(".sticky-app");
-let stickyClickItems = document.querySelectorAll(".sticky--click");
-let stickyHeadWrap = document.querySelector(".sticky-app__head--wrap");
+let stickyListeners = [];
 
-// Set the initial display style of the sticky app to "none"
-stickyApp.style.display = "none";
-
-// Add click event listeners to the sticky click items
-stickyClickItems.forEach(function (item) {
-  item.addEventListener("click", function () {
-    stickyApp.style.display = "block";
+function attachStickyListeners() {
+  stickyListeners.forEach(function (listener) {
+    listener.element.removeEventListener(listener.event, listener.handler);
   });
-});
+  stickyListeners = [];
 
-// Add a click event listener to the sticky head wrap
-stickyHeadWrap.addEventListener("click", function () {
+  let stickyApp = document.querySelector(".sticky-app");
+  let stickyClickItems = document.querySelectorAll(".sticky--click");
+  let stickyHeadWrap = document.querySelector(".sticky-app__head--wrap");
+
   stickyApp.style.display = "none";
-});
+
+  stickyClickItems.forEach(function (item) {
+    let handler = function () {
+      stickyApp.style.display = "block";
+    };
+    item.addEventListener("click", handler);
+    stickyListeners.push({element: item, event: "click", handler: handler});
+  });
+
+  let handler = function () {
+    stickyApp.style.display = "none";
+  };
+  stickyHeadWrap.addEventListener("click", handler);
+  stickyListeners.push({
+    element: stickyHeadWrap,
+    event: "click",
+    handler: handler,
+  });
+}
+attachStickyListeners();

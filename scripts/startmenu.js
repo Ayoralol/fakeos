@@ -2,6 +2,7 @@
 
 let startMenu = document.querySelector(".start");
 let startButton = document.querySelector(".task__start");
+let hideStart = document.querySelectorAll(".hide--start");
 
 startMenu.style.display = "none";
 
@@ -33,4 +34,10 @@ document.addEventListener("click", function (event) {
   if (!powerMenu.contains(event.target)) {
     powerMenu.style.display = "none";
   }
+});
+
+hideStart.forEach(function (element) {
+  element.addEventListener("click", function () {
+    startMenu.style.display = "none";
+  });
 });

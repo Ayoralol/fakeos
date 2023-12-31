@@ -4,19 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <script src="./scripts/defaultarrays.js" defer></script>
     <script src="./scripts/date-time.js" defer></script>
     <script src="./scripts/startmenu.js" defer></script>
     <script src="./scripts/sticky.js" defer></script>
+    <script src="./scripts/edge.js" defer></script>
+    <script src="./scripts/pics.js" defer></script>
+    <script src="./scripts/txt.js" defer></script>
+    <script src="./scripts/explorer.js" defer></script>
     <title>FakeOS - Windows 11</title>
   </head>
   <body>
     <section class="main">
       <div class="grid">
-        <div class="grid__app grid__app__recycle">
+        <div class="grid__app grid__app__recycle bin--click">
           <img src="./images+icons/binempty.png" class="grid__app__recycle--icon">
           <p class="grid__app--text">Recycle Bin</p>
         </div>
-        <div class="grid__app grid__app__edge">
+        <div class="grid__app grid__app__edge edge--click">
           <img src="./images+icons/edgedesktop.svg" class="grid__app__edge--icon">
           <p class="grid__app--text">Edge</p>
         </div>
@@ -24,18 +29,24 @@
           <img src="./images+icons/stickynotes.png" class="grid__app__sticky--icon">
           <p class="grid__app--text">Sticky Notes</p>
         </div>
-        <div class="grid__app grid__app__explorer">
+        <div class="grid__app grid__app__explorer doc--click">
           <img src="./images+icons/folderdesktop.png" class="grid__app__explorer--icon">
           <p class="grid__app--text">Documents</p>
         </div>
       </div>
       <div class="edge">
+        <div class="edge__top">
+          <p class="edge__top__text">Microsoft Edge</p>
+          <div class="edge__top__exit">
+            <img src="./images+icons/close.png" class="edge__top__exit--btn">
+          </div>
+        </div>
         <iframe src="https://www.bing.com" class="edge__iframe"></iframe>
       </div>
       <div class="explorer">
         <div class="explorer__top">
-          <p class="explorer__top__text">Pictures</p>
-          <div class="explorer__top__exit">
+          <p class="explorer__top__text"></p>
+          <div class="explorer__top__exit ex--close">
             <img src="./images+icons/close.png" class="explorer__top__exit--btn">
           </div>
         </div>
@@ -52,19 +63,19 @@
         </div>
         <div class="explorer__main">
           <div class="explorer__main__nav">
-            <div class="explorer__main__nav__item">
+            <div class="explorer__main__nav__item desk--click">
               <img src="./images+icons/deskicon.png" class="explorer__main__nav__item--img">
               <p class="explorer__main__nav__item--text">Desktop</p>
             </div>
-            <div class="explorer__main__nav__item">
+            <div class="explorer__main__nav__item doc--click">
               <img src="./images+icons/folderdesktop.png" class="explorer__main__nav__item--img">
               <p class="explorer__main__nav__item--text">Documents</p>
             </div>
-            <div class="explorer__main__nav__item">
+            <div class="explorer__main__nav__item pic--click">
               <img src="./images+icons/picicon.png" class="explorer__main__nav__item--img">
               <p class="explorer__main__nav__item--text">Pictures</p>
             </div>
-            <div class="explorer__main__nav__item">
+            <div class="explorer__main__nav__item bin--click">
               <img src="./images+icons/binfull.png" class="explorer__main__nav__item--img">
               <p class="explorer__main__nav__item--text">Recycle Bin</p>
             </div>
@@ -99,6 +110,38 @@
           <textarea cols="28" rows="10" class="sticky-app__body--text"></textarea>
         </div>
       </div>
+      <div class="text-app">
+        <div class="text-app__top">
+          <p class="text-app__top__text">Text Document</p>
+          <div class="text-app__top__exit">
+            <img src="./images+icons/close.png" class="text-app__top__exit--btn">
+          </div>
+        </div>
+        <div class="text-app__options">
+          <div class="text-app__options__save">
+            <p class="text-app__options__save--text">Save +</p>
+          </div>
+        </div>
+        <div class="text-app__main">
+          <textarea cols="95" rows="30" class="text-app__main__text"></textarea>
+        </div>
+      </div>
+      <div class="pics-app">
+        <div class="pics-app__top">
+          <p class="pics-app__top__text">Picture</p>
+          <div class="pics-app__top__exit">
+            <img src="./images+icons/close.png" class="pics-app__top__exit--btn">
+          </div>
+        </div>
+        <div class="pics-app__options">
+          <div class="pics-app__options__bg">
+            <p class="pics-app__options__bg--text">Set as desktop background</p>
+          </div>
+        </div>
+        <div class="pics-app__main">
+          <img src="./images+icons/backgrounds/darkmode.jpg" class="pics-app__main__img">
+        </div>
+      </div>
     </section>
     <div class="start">
       <div class="start__search">
@@ -115,15 +158,15 @@
         <p>Recommended</p>
       </div>
       <div class="start__div start__recom-app">
-        <div class="start__recom-app__app">
+        <div class="start__recom-app__app edge--click hide--start">
           <img src="./images+icons/edgestart.svg" class="start__recom-app__app--img">
           <p>Microsoft Edge</p>
         </div>
-        <div class="start__recom-app__app sticky--click">
+        <div class="start__recom-app__app sticky--click hide--start">
           <img src="./images+icons/stickynotes.png" class="start__recom-app__app--img">
           <p>Sticky Notes</p>
         </div>
-        <div class="start__recom-app__app">
+        <div class="start__recom-app__app doc--click hide--start">
           <img src="./images+icons/folderdesktop.png" class="start__recom-app__app--img">
           <p>Documents</p>
         </div>
@@ -159,10 +202,10 @@
         <input type="text" class="task__search--text" placeholder="Search">
       </div>
       <div class="task__apps">
-        <div class="task__apps__sel">
+        <div class="task__apps__sel edge--click">
           <img src="./images+icons/edgetaskbar.svg" class="task__apps__sel--edge">
         </div>
-        <div class="task__apps__sel">
+        <div class="task__apps__sel doc--click">
           <img src="./images+icons/folder.png" class="task__apps__sel--folder">
         </div>
       </div>
