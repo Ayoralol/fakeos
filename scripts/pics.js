@@ -1,6 +1,6 @@
 let picListeners = [];
 
-function attachPicListeners() {
+export function attachPicListeners() {
   picListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -33,7 +33,6 @@ function attachPicListeners() {
     handler: handler,
   });
 }
-attachPicListeners();
 let setBg = document.querySelector(".pics-app__options__bg");
 
 setBg.addEventListener("click", function () {

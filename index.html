@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./scripts/defaultarrays.js" defer></script>
-    <script src="./scripts/date-time.js" defer></script>
-    <script src="./scripts/startmenu.js" defer></script>
-    <script src="./scripts/sticky.js" defer></script>
-    <script src="./scripts/edge.js" defer></script>
-    <script src="./scripts/pics.js" defer></script>
-    <script src="./scripts/txt.js" defer></script>
-    <script src="./scripts/explorer.js" defer></script>
+    <script type="module" src="./scripts/defaultarrays.js" defer></script>
+    <script type="module" src="./scripts/date-time.js" defer></script>
+    <script type="module" src="./scripts/startmenu.js" defer></script>
+    <script type="module" src="./scripts/sticky.js" defer></script>
+    <script type="module" src="./scripts/edge.js" defer></script>
+    <script type="module" src="./scripts/pics.js" defer></script>
+    <script type="module" src="./scripts/txt.js" defer></script>
+    <script type="module" src="./scripts/explorer.js" defer></script>
     <title>FakeOS - Windows 11</title>
   </head>
   <body>
@@ -59,6 +59,11 @@
           </div>
           <div class="explorer__options__delete">
             <p class="explorer__options__delete--text">Delete -</p>
+          </div>
+        </div>
+        <div class="explorer__options__del-list">
+          <div class="explorer__options__del-list__item">
+            <p class="explorer__options__del-list__item--text" data-name="README"></p>
           </div>
         </div>
         <div class="explorer__main">
@@ -123,7 +128,7 @@
           </div>
         </div>
         <div class="text-app__main">
-          <textarea cols="95" rows="30" class="text-app__main__text"></textarea>
+          <textarea cols="95" rows="10" class="text-app__main__text"></textarea>
         </div>
       </div>
       <div class="pics-app">

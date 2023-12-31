@@ -1,6 +1,6 @@
 let edgeListeners = [];
 
-function attachEdgeListeners() {
+export function attachEdgeListeners() {
   edgeListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -30,4 +30,3 @@ function attachEdgeListeners() {
     handler: handler,
   });
 }
-attachEdgeListeners();

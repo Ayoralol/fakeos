@@ -198,6 +198,83 @@
 .explorer__options__delete:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
+.explorer__options__clear {
+  height: 75%;
+  border-radius: 3px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: background-color 0.1s ease-in-out;
+}
+.explorer__options__clear:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__clear:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__options__restore {
+  height: 75%;
+  border-radius: 3px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  transition: background-color 0.1s ease-in-out;
+}
+.explorer__options__restore:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__restore:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__options__del-list {
+  position: fixed;
+  width: 300px;
+  height: 329px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 55px;
+  background-color: rgb(20, 20, 20);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  display: none;
+  margin-left: 120px;
+  border: 0.5px solid rgb(50, 50, 50);
+  border-top: 0;
+  border-bottom: 0;
+}
+.explorer__options__del-list--head {
+  font-size: 13px;
+}
+.explorer__options__del-list__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background-color 0.1s ease-in-out;
+  align-self: flex-start;
+  margin: 10px 0 0 5px;
+  width: 80%;
+  height: 20px;
+  border-radius: 5px;
+}
+.explorer__options__del-list__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.explorer__options__del-list__item:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.explorer__options__del-list__item--text {
+  font-size: 11px;
+  font-weight: 300;
+  padding-left: 8px;
+}
 .explorer__main {
   width: 100%;
   height: 330px;
@@ -320,11 +397,12 @@
   display: none;
   position: fixed;
   width: 600px;
-  height: 600px;
-  background-color: rgb(25, 25, 25);
+  height: 50%;
+  background-color: rgb(30, 30, 30);
   top: 18%;
   left: 18%;
   border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 .text-app__top {
   display: flex;
@@ -334,6 +412,7 @@
   border-radius: 10px 10px 0 0;
   height: 30px;
   width: 100%;
+  background-color: rgb(20, 20, 20);
 }
 .text-app__top__text {
   font-size: 11px;
@@ -383,7 +462,7 @@
 }
 .text-app__main__text {
   resize: none;
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(30, 30, 30);
   cursor: text;
   color: white;
   font-size: 12px;

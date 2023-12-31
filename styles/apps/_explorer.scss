@@ -31,6 +31,49 @@
       @include explBtn;
       @include appHover;
     }
+    &__clear {
+      @include explBtn;
+      @include appHover;
+    }
+    &__restore {
+      @include explBtn;
+      @include appHover;
+    }
+    &__del-list {
+      position: fixed;
+      width: 300px;
+      height: 329px;
+      @include flexJuStart;
+      flex-direction: column;
+      margin-bottom: 55px;
+      background-color: rgba(20, 20, 20, 1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      display: none;
+      margin-left: 120px;
+      border: 0.5px solid rgb(50, 50, 50);
+      border-top: 0;
+      border-bottom: 0;
+      &--head {
+        font-size: 13px;
+      }
+      &__item {
+        @include flexJuStart;
+        @include appHover;
+        align-self: flex-start;
+        margin: 10px 0 0 5px;
+        width: 80%;
+        height: 20px;
+        border-radius: 5px;
+        &--text {
+          font-size: 11px;
+          font-weight: 300;
+          padding-left: 8px;
+        }
+      }
+    }
   }
   &__main {
     width: 100%;

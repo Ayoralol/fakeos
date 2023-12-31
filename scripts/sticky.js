@@ -1,6 +1,6 @@
 let stickyListeners = [];
 
-function attachStickyListeners() {
+export function attachStickyListeners() {
   stickyListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -30,4 +30,3 @@ function attachStickyListeners() {
     handler: handler,
   });
 }
-attachStickyListeners();

@@ -1,4 +1,4 @@
-let docArray = [
+export let docArray = [
   {
     name: "README",
     icon: "./images+icons/txticon.png",
@@ -7,7 +7,7 @@ let docArray = [
   },
 ];
 
-let picArray = [
+export let picArray = [
   {
     name: "Default Blue",
     icon: "./images+icons/backgrounds/previews/backgroundprev.jpg",
@@ -34,14 +34,13 @@ let picArray = [
   },
 ];
 
-let binArray = [];
+export let binArray = [];
 
-const deskArray = [
+export const deskArray = [
   {
     name: "Bin",
     icon: "./images+icons/binfull.png",
     appClass: "bin--click",
-    setArray: binArray,
   },
   {
     name: "Edge",
@@ -57,6 +56,5 @@ const deskArray = [
     name: "Documents",
     icon: "./images+icons/folderdesktop.png",
     appClass: "doc--click",
-    setArray: docArray,
   },
 ];

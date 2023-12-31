@@ -1,3 +1,12 @@
+// module imports
+import {attachStickyListeners} from "./sticky.js";
+import {attachEdgeListeners} from "./edge.js";
+import {attachPicListeners} from "./pics.js";
+import {attachTxtListeners} from "./txt.js";
+import {docArray} from "./defaultarrays.js";
+import {binArray} from "./defaultarrays.js";
+import {deskArray} from "./defaultarrays.js";
+import {picArray} from "./defaultarrays.js";
 // open/close explorer window
 
 let explorer = document.querySelector(".explorer");
@@ -6,12 +15,14 @@ let openBin = document.querySelectorAll(".bin--click");
 let openDesk = document.querySelectorAll(".desk--click");
 let openPic = document.querySelectorAll(".pic--click");
 let closeButton = document.querySelector(".ex--close");
+let deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
 let eventListeners = [];
 
 // update queries due to changing queries not being updated
 function updateQueries() {
   openDoc = document.querySelectorAll(".doc--click");
   openBin = document.querySelectorAll(".bin--click");
+  deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
 }
 // Initial display of explorer (per a bug)
 explorer.style.display = "none";
@@ -57,6 +68,31 @@ function attachEventListeners() {
     eventListeners.push({element: button, event: "click", handler: handler});
   });
 
+  let newDocButton = document.querySelector(".explorer__options__new");
+  if (newDocButton) {
+    let handler = createNewDocument;
+    newDocButton.addEventListener("click", handler);
+    eventListeners.push({
+      element: newDocButton,
+      event: "click",
+      handler: handler,
+    });
+  }
+
+  let deleteMainButton = document.querySelector(".explorer__options__delete");
+  if (deleteMainButton) {
+    let handler = function (event) {
+      event.stopPropagation();
+      deleteDisplay();
+    };
+    deleteMainButton.addEventListener("click", handler);
+    eventListeners.push({
+      element: deleteMainButton,
+      event: "click",
+      handler: handler,
+    });
+  }
+
   attachStickyListeners();
   attachEdgeListeners();
   attachPicListeners();
@@ -76,24 +112,82 @@ function updateDOM() {
   attachEventListeners();
 }
 
-// default arrays for the explorer
-
-// docArray class
+// Creating a new document
 
 class Document {
   constructor(name) {
     this.name = name;
-    this.icon = "./images+icons/txt.png";
+    this.icon = "./images+icons/txticon.png";
     this.appClass = "txt--click";
     this.docContent = "";
   }
 }
 
-// creating new document
-
 function addDocument(name) {
   let newDocument = new Document(name);
   docArray.push(newDocument);
+  renderDoc();
+}
+
+function createNewDocument() {
+  let docName = prompt("Enter the name of the document");
+  if (docName !== null && docName !== "") {
+    addDocument(docName);
+  }
+}
+
+// Delete document
+// delete display
+function toggleDeleteListener(event) {
+  let render = document.querySelector(".explorer__options__del-list");
+  if (render.style.display === "flex" && !render.contains(event.target)) {
+    render.style.display = "none";
+  }
+}
+
+function deleteDisplay() {
+  updateDOM();
+  let render = document.querySelector(".explorer__options__del-list");
+  let array = docArray;
+  render.style.display = "flex";
+
+  render.innerHTML = "";
+  let html = `<p class="explorer__options__del-list--head">Select file to delete</p>`;
+  array.forEach(function (item) {
+    let docName = item.name;
+    html += `
+    <div class="explorer__options__del-list__item">
+        <p class="explorer__options__del-list__item--text" data-name="${docName}">${docName}</p>
+    </div>`;
+  });
+  render.innerHTML = html;
+
+  deleteBtn = document.querySelectorAll(
+    ".explorer__options__del-list__item--text"
+  );
+  deleteBtn.forEach(function (button) {
+    let handler = function () {
+      let docName = button.dataset.name;
+      deleteDocument(docName);
+    };
+    button.addEventListener("click", handler);
+    eventListeners.push({element: button, event: "click", handler: handler});
+  });
+
+  document.removeEventListener("click", toggleDeleteListener);
+  document.addEventListener("click", toggleDeleteListener);
+}
+
+// delete actual item
+function deleteDocument(docName) {
+  let index = docArray.findIndex((item) => item.name === docName);
+  if (index !== -1) {
+    let deletedDoc = docArray.splice(index, 1)[0];
+    binArray.push(deletedDoc);
+    deleteDisplay();
+    renderDoc();
+    updateBin();
+  }
 }
 
 // render each file
@@ -138,53 +232,31 @@ function renderMain(
   let newBtnHTML =
     "<div class='explorer__options__new'><p class='explorer__options__new--text'>New +</p></div>";
   let clearBtnHTML =
-    "<p class='explorer__options__delete--text clear--bin'>Clear Bin</p>";
-  let deleteBtnHTML = `<div class='explorer__options__delete'>${
-    bin
-      ? clearBtnHTML
-      : "<p class='explorer__options__delete--text delete--item'>Delete -</p>"
-  }</div>`;
+    "<div class='explorer__options__clear'><p class='explorer__options__delete--text'>Empty Bin</p></div>";
+  let restoreBtnHTML =
+    "<div class='explorer__options__restore'><p class='explorer__options__delete--text'>Restore Bin</p></div>";
+  let deleteBtnHTML = `<div class='explorer__options__delete'><p class='explorer__options__delete--text delete--item'>Delete -</p></div>`;
   //title update
   title.innerHTML = topText;
   // options update
   options.innerHTML = `
   ${newBtn ? newBtnHTML : ""}
-  <div class="explorer__options__sort">
-    <p class="explorer__options__sort--text">Sort &#8645;</p>
-  </div>
-  ${deleteBtn ? deleteBtnHTML : ""}`;
+  ${deleteBtn ? deleteBtnHTML : ""}
+  ${bin ? restoreBtnHTML : ""}
+  ${bin ? clearBtnHTML : ""}`;
+
   // main update
   render.innerHTML = "";
   let html = "";
   array.forEach(function (item) {
     let docContent = item.docContent !== undefined ? item.docContent : "";
+    let docName = item.name;
     html += `
-    <div class="explorer__main__render__item ${item.appClass}" data-value="${docContent}">
+    <div class="explorer__main__render__item ${item.appClass}" data-name="${docName}" data-value="${docContent}">
       <img src=${item.icon} class="explorer__main__render__item--img">
       <p class="explorer__main__render__item--text">${item.name}</p>
     </div>`;
     render.innerHTML = html;
   });
   updateDOM();
-}
-
-// sort the arrays
-
-function sortObjects(array, reverse = false) {
-  array.sort(function (a, b) {
-    let nameA = a.name.toLowerCase();
-    let nameB = b.name.toLowerCase();
-
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  if (reverse == true) {
-    array.reverse();
-  }
 }
