@@ -1,5 +1,8 @@
 let edgeListeners = [];
 
+let edgeLoad = document.querySelector(".edge");
+edgeLoad.style.display = "none";
+
 export function attachEdgeListeners() {
   edgeListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
@@ -9,8 +12,6 @@ export function attachEdgeListeners() {
   let edgeApp = document.querySelector(".edge");
   let edgeClickItems = document.querySelectorAll(".edge--click");
   let edgeClose = document.querySelector(".edge__top__exit");
-
-  edgeApp.style.display = "none";
 
   edgeClickItems.forEach(function (item) {
     let handler = function () {

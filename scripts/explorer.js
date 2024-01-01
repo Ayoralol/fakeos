@@ -3,10 +3,7 @@ import {attachStickyListeners} from "./sticky.js";
 import {attachEdgeListeners} from "./edge.js";
 import {attachPicListeners} from "./pics.js";
 import {attachTxtListeners} from "./txt.js";
-import {docArray} from "./defaultarrays.js";
-import {binArray} from "./defaultarrays.js";
-import {deskArray} from "./defaultarrays.js";
-import {picArray} from "./defaultarrays.js";
+import arrays from "./defaultarrays.js";
 // open/close explorer window
 
 let explorer = document.querySelector(".explorer");
@@ -18,12 +15,6 @@ let closeButton = document.querySelector(".ex--close");
 let deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
 let eventListeners = [];
 
-// update queries due to changing queries not being updated
-function updateQueries() {
-  openDoc = document.querySelectorAll(".doc--click");
-  openBin = document.querySelectorAll(".bin--click");
-  deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
-}
 // Initial display of explorer (per a bug)
 explorer.style.display = "none";
 
@@ -31,6 +22,10 @@ explorer.style.display = "none";
 // using this attach function as the listeners were stacking on each other
 // causing listeners to be added for every click so removing and re-adding fixes that
 function attachEventListeners() {
+  // re-declaring some queries
+  openDoc = document.querySelectorAll(".doc--click");
+  openBin = document.querySelectorAll(".bin--click");
+  deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
   // Removing old listeners
   eventListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
@@ -93,24 +88,50 @@ function attachEventListeners() {
     });
   }
 
+  let clearBinButton = document.querySelector(".explorer__options__clear");
+  if (clearBinButton) {
+    let handler = function () {
+      arrays.binArray = [];
+      renderBin();
+      updateBin();
+    };
+    clearBinButton.addEventListener("click", handler);
+    eventListeners.push({
+      element: clearBinButton,
+      event: "click",
+      handler: handler,
+    });
+  }
+
+  let restoreBinButton = document.querySelector(".explorer__options__restore");
+  if (restoreBinButton) {
+    let handler = function () {
+      while (arrays.binArray.length > 0) {
+        arrays.docArray.push(arrays.binArray.pop());
+      }
+      renderBin();
+      updateBin();
+    };
+    restoreBinButton.addEventListener("click", handler);
+    eventListeners.push({
+      element: restoreBinButton,
+      event: "click",
+      handler: handler,
+    });
+  }
+
   attachStickyListeners();
   attachEdgeListeners();
   attachPicListeners();
   attachTxtListeners();
 }
 
+attachEventListeners();
+
 // Close explorer
 closeButton.addEventListener("click", function () {
   explorer.style.display = "none";
 });
-
-attachEventListeners();
-
-// DOM update for queries and listeners
-function updateDOM() {
-  updateQueries();
-  attachEventListeners();
-}
 
 // Creating a new document
 
@@ -125,7 +146,7 @@ class Document {
 
 function addDocument(name) {
   let newDocument = new Document(name);
-  docArray.push(newDocument);
+  arrays.docArray.push(newDocument);
   renderDoc();
 }
 
@@ -146,9 +167,9 @@ function toggleDeleteListener(event) {
 }
 
 function deleteDisplay() {
-  updateDOM();
+  attachEventListeners();
   let render = document.querySelector(".explorer__options__del-list");
-  let array = docArray;
+  let array = arrays.docArray;
   render.style.display = "flex";
 
   render.innerHTML = "";
@@ -156,15 +177,13 @@ function deleteDisplay() {
   array.forEach(function (item) {
     let docName = item.name;
     html += `
-    <div class="explorer__options__del-list__item">
-        <p class="explorer__options__del-list__item--text" data-name="${docName}">${docName}</p>
+    <div class="explorer__options__del-list__item" data-name="${docName}">
+        <p class="explorer__options__del-list__item--text">${docName}</p>
     </div>`;
   });
   render.innerHTML = html;
 
-  deleteBtn = document.querySelectorAll(
-    ".explorer__options__del-list__item--text"
-  );
+  deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
   deleteBtn.forEach(function (button) {
     let handler = function () {
       let docName = button.dataset.name;
@@ -180,21 +199,33 @@ function deleteDisplay() {
 
 // delete actual item
 function deleteDocument(docName) {
-  let index = docArray.findIndex((item) => item.name === docName);
+  let index = arrays.docArray.findIndex((item) => item.name === docName);
   if (index !== -1) {
-    let deletedDoc = docArray.splice(index, 1)[0];
-    binArray.push(deletedDoc);
+    let deletedDoc = arrays.docArray.splice(index, 1)[0];
+    arrays.binArray.push(deletedDoc);
     deleteDisplay();
     renderDoc();
     updateBin();
   }
 }
 
+// checking the bin for items and changing img
+
+function updateBin() {
+  let binImg = document.querySelector(".grid__app__recycle--icon");
+  if (arrays.binArray.length > 0) {
+    binImg.src = "./images+icons/binfull.png";
+  } else {
+    binImg.src = "./images+icons/binempty.png";
+  }
+}
+updateBin();
+
 // render each file
 
 function renderDoc() {
   let topText = "Documents";
-  let array = docArray;
+  let array = arrays.docArray;
   let bin = false;
   let newBtn = true;
   let deleteBtn = true;
@@ -202,18 +233,18 @@ function renderDoc() {
 }
 function renderBin() {
   let topText = "Recycle Bin";
-  let array = binArray;
+  let array = arrays.binArray;
   let bin = true;
   renderMain(topText, array, bin);
 }
 function renderDesk() {
   let topText = "Desktop";
-  let array = deskArray;
+  let array = arrays.deskArray;
   renderMain(topText, array);
 }
 function renderPic() {
   let topText = "Pictures";
-  let array = picArray;
+  let array = arrays.picArray;
   renderMain(topText, array);
 }
 
@@ -258,5 +289,5 @@ function renderMain(
     </div>`;
     render.innerHTML = html;
   });
-  updateDOM();
+  attachEventListeners();
 }

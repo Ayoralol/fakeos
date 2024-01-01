@@ -1,4 +1,4 @@
-import {docArray} from "./defaultarrays.js";
+import arrays from "./defaultarrays.js";
 let txtListeners = [];
 
 export function attachTxtListeners() {
@@ -40,10 +40,12 @@ export function attachTxtListeners() {
   function saveTxt() {
     let txtSaveName = txtMain.getAttribute("data-name");
     let txtSaveContent = txtMain.value;
-    let txtSaveIndex = docArray.findIndex((item) => item.name === txtSaveName);
+    let txtSaveIndex = arrays.docArray.findIndex(
+      (item) => item.name === txtSaveName
+    );
 
     if (txtSaveIndex !== -1) {
-      docArray[txtSaveIndex].docContent = txtSaveContent;
+      arrays.docArray[txtSaveIndex].docContent = txtSaveContent;
       txtMain.innerHTML = txtSaveContent;
     } else {
       console.error(`Document with name ${txtSaveName} not found in docArray`);
@@ -59,12 +61,12 @@ export function attachTxtListeners() {
 
   // When a document is opened
   function openDocument(documentName) {
-    let documentIndex = docArray.findIndex(
+    let documentIndex = arrays.docArray.findIndex(
       (item) => item.name === documentName
     );
 
     if (documentIndex !== -1) {
-      let docContent = docArray[documentIndex].docContent;
+      let docContent = arrays.docArray[documentIndex].docContent;
       txtMain.value = docContent;
       txtMain.innerHTML = docContent;
       txtMain.setAttribute("data-name", documentName);

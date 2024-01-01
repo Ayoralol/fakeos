@@ -1,5 +1,8 @@
 let stickyListeners = [];
 
+let stickyLoad = document.querySelector(".sticky-app");
+stickyLoad.style.display = "none";
+
 export function attachStickyListeners() {
   stickyListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
@@ -9,8 +12,6 @@ export function attachStickyListeners() {
   let stickyApp = document.querySelector(".sticky-app");
   let stickyClickItems = document.querySelectorAll(".sticky--click");
   let stickyHeadWrap = document.querySelector(".sticky-app__head--wrap");
-
-  stickyApp.style.display = "none";
 
   stickyClickItems.forEach(function (item) {
     let handler = function () {

@@ -4,4 +4,3 @@
 
 - restore files from binArray
 - delete files from binArray
-- close the delete render on deletion
