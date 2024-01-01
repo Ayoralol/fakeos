@@ -99,7 +99,10 @@
     letter-spacing: 0.3px;
     display: none;
     &__list {
-      @include flexCenter;
+      @include flexJuStart;
+      width: 100%;
+      height: 30%;
+      border-radius: 10px;
       &--icon {
         width: 18px;
         margin-right: 12px;
@@ -107,4 +110,8 @@
       }
     }
   }
+}
+
+.power--shutdown {
+  @include appHover;
 }
