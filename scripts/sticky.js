@@ -3,7 +3,7 @@ let stickyListeners = [];
 let stickyLoad = document.querySelector(".sticky-app");
 stickyLoad.style.display = "none";
 
-export function attachStickyListeners() {
+export const attachStickyListeners = () => {
   stickyListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -30,4 +30,4 @@ export function attachStickyListeners() {
     event: "click",
     handler: handler,
   });
-}
+};

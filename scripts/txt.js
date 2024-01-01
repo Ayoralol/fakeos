@@ -1,7 +1,7 @@
 import arrays from "./defaultarrays.js";
 let txtListeners = [];
 
-export function attachTxtListeners() {
+export const attachTxtListeners = () => {
   txtListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -37,7 +37,7 @@ export function attachTxtListeners() {
   // save button
   let txtSave = document.querySelector(".text-app__options__save");
 
-  function saveTxt() {
+  const saveTxt = () => {
     let txtSaveName = txtMain.getAttribute("data-name");
     let txtSaveContent = txtMain.value;
     let txtSaveIndex = arrays.docArray.findIndex(
@@ -50,7 +50,7 @@ export function attachTxtListeners() {
     } else {
       console.error(`Document with name ${txtSaveName} not found in docArray`);
     }
-  }
+  };
 
   txtSave.addEventListener("click", saveTxt);
   txtListeners.push({
@@ -60,7 +60,7 @@ export function attachTxtListeners() {
   });
 
   // When a document is opened
-  function openDocument(documentName) {
+  const openDocument = (documentName) => {
     let documentIndex = arrays.docArray.findIndex(
       (item) => item.name === documentName
     );
@@ -73,5 +73,5 @@ export function attachTxtListeners() {
     } else {
       console.error(`Document with name ${documentName} not found in docArray`);
     }
-  }
-}
+  };
+};

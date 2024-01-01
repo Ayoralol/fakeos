@@ -3,7 +3,8 @@ let docArray = [
     name: "README",
     icon: "./images+icons/txticon.png",
     appClass: "txt--click",
-    docContent: "The readme of this project",
+    docContent:
+      "This project was to re-create an OS of our choosing. I based this off of Windows 11 darkmode style that I displayed on my laptop and tried to match. The goal of this was to better implement our understanding of html, scss, and js, including using more arrow functions, modals and other js implementations. Created by Reece Smith.",
   },
 ];
 

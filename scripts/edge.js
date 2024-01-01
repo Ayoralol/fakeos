@@ -3,7 +3,7 @@ let edgeListeners = [];
 let edgeLoad = document.querySelector(".edge");
 edgeLoad.style.display = "none";
 
-export function attachEdgeListeners() {
+export const attachEdgeListeners = () => {
   edgeListeners.forEach(function (listener) {
     listener.element.removeEventListener(listener.event, listener.handler);
   });
@@ -30,4 +30,4 @@ export function attachEdgeListeners() {
     event: "click",
     handler: handler,
   });
-}
+};
