@@ -1,0 +1,41 @@
+@import "../mixins/_mixin.scss";
+
+.text-app {
+  display: none;
+  position: fixed;
+  width: 600px;
+  height: 50%;
+  background-color: rgb(30, 30, 30);
+  top: 18%;
+  left: 18%;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  &__top {
+    @include defTop;
+    background-color: rgb(20, 20, 20);
+  }
+  &__options {
+    @include flexJuStart;
+    height: 35px;
+    font-size: 12px;
+    border-bottom: 0.5px solid rgb(50, 50, 50);
+    &__save {
+      @include explBtn;
+      @include appHover;
+    }
+  }
+  &__main {
+    &__text {
+      resize: none;
+      background-color: rgb(30, 30, 30);
+      cursor: text;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      &:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+}

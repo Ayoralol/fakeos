@@ -1,0 +1,36 @@
+@import "../mixins/_mixin.scss";
+
+.pics-app {
+  // display: none;
+  position: fixed;
+  width: 800px;
+  height: 500px;
+  background-color: rgb(25, 25, 25);
+  top: 10%;
+  left: 20%;
+  border-radius: 10px;
+  &__top {
+    @include defTop;
+  }
+  &__options {
+    @include flexJuStart;
+    height: 35px;
+    font-size: 12px;
+    border-bottom: 0.5px solid rgb(50, 50, 50);
+    &__bg {
+      @include explBtn;
+      width: 200px;
+      @include appHover;
+    }
+  }
+  &__main {
+    @include flexCenter;
+    width: 800px;
+    height: 435px;
+    &__img {
+      max-width: 99%;
+      max-height: 99%;
+      border-radius: 10px;
+    }
+  }
+}

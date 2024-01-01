@@ -1,0 +1,132 @@
+@import "../mixins/_mixin.scss";
+
+.explorer {
+  display: none;
+  position: fixed;
+  width: 800px;
+  height: 400px;
+  background-color: rgb(25, 25, 25);
+  top: 15%;
+  left: 15%;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  border: 0.5px solid rgb(50, 50, 50);
+  &__top {
+    @include defTop;
+  }
+  &__options {
+    @include flexJuStart;
+    height: 40px;
+    font-size: 12px;
+    border-bottom: 0.5px solid rgb(50, 50, 50);
+    &__new {
+      @include explBtn;
+      @include appHover;
+    }
+    &__sort {
+      @include explBtn;
+      @include appHover;
+    }
+    &__delete {
+      @include explBtn;
+      @include appHover;
+    }
+    &__clear {
+      @include explBtn;
+      @include appHover;
+    }
+    &__restore {
+      @include explBtn;
+      @include appHover;
+    }
+    &__del-list {
+      position: fixed;
+      width: 300px;
+      height: 329px;
+      @include flexJuStart;
+      flex-direction: column;
+      margin-bottom: 55px;
+      background-color: rgba(20, 20, 20, 1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      display: none;
+      margin-left: 120px;
+      border: 0.5px solid rgb(50, 50, 50);
+      border-top: 0;
+      border-bottom: 0;
+      &--head {
+        font-size: 13px;
+      }
+      &__item {
+        @include flexJuStart;
+        @include appHover;
+        align-self: flex-start;
+        margin: 10px 0 0 5px;
+        width: 80%;
+        height: 20px;
+        border-radius: 5px;
+        &--text {
+          font-size: 11px;
+          font-weight: 300;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+  &__main {
+    width: 100%;
+    height: 330px;
+    display: flex;
+    &__nav {
+      width: 15%;
+      height: 100%;
+      border-right: 0.5px solid rgb(50, 50, 50);
+      overflow: auto;
+      &__item {
+        @include appHover;
+        @include flexJuStart;
+        width: 90%;
+        height: 25px;
+        font-size: 11px;
+        letter-spacing: 0.3px;
+        margin-left: 5px;
+        margin-top: 5px;
+        border-radius: 5px;
+        &--img {
+          max-width: 12px;
+          margin-right: 5px;
+          margin-left: 12px;
+        }
+      }
+    }
+    &__render {
+      width: 85%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      &__item {
+        @include flexJuStart;
+        @include appHover;
+        margin: 5px 0 0 5px;
+        width: 35%;
+        height: 20px;
+        border-radius: 5px;
+        &--text {
+          font-size: 11px;
+          font-weight: 300;
+          letter-spacing: 0.3px;
+          padding-left: 8px;
+        }
+        &--img {
+          max-height: 15px;
+          max-width: 30px;
+          border-radius: 3px;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+}
