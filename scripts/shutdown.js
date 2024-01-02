@@ -5,6 +5,6 @@ powerButton.addEventListener("click", function () {
   let shutdown = confirm("Are you sure you want to shutdown?");
   if (shutdown) {
     body.style.backgroundColor = "black";
-    body.innerHTML = "";
+    body.innerHTML = "<p class='shutdown__screen'>(F5 is the power button)</p>";
   }
 });
