@@ -15,7 +15,7 @@ let closeButton = document.querySelector(".ex--close");
 let deleteBtn = document.querySelectorAll(".explorer__options__del-list__item");
 let eventListeners = [];
 
-// Initial display of explorer (per a bug)
+// Initial display of explorer (per a bug that made first click re-hide the explorer)
 explorer.style.display = "none";
 
 // render each file type
@@ -232,7 +232,7 @@ closeButton.addEventListener("click", function () {
   explorer.style.display = "none";
 });
 
-// checking the bin for items and changing img
+// checking the bin for items and changing desktop img
 const updateBin = () => {
   let binImg = document.querySelector(".grid__app__recycle--icon");
   if (arrays.binArray.length > 0) {
